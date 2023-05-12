@@ -4,9 +4,11 @@ import arc.Core;
 import arc.files.Fi;
 import arc.util.Log;
 import mindustry.Vars;
+import mindustry.content.Blocks;
 import mindustry.mod.Mod;
 import mindustry.world.Block;
 import mindustry.world.blocks.power.PowerNode;
+import mindustry.world.meta.BuildVisibility;
 
 public class MindustryMetadataExtractor extends Mod{
 
@@ -33,15 +35,19 @@ public class MindustryMetadataExtractor extends Mod{
                 .append('\n');
 
         for (Block block : Vars.content.blocks()) {
-            sbr.append(block.name)
-                    .append(';').append(block.size)
-                    .append(';').append(block.hasPower)
-                    .append(';').append(block.configurable)
-                    .append(';').append(block.subclass.getSimpleName())
-                    .append(';').append(block instanceof PowerNode p ? p.maxNodes : 0)
-                    .append(';').append(block instanceof PowerNode p ? p.laserRange : 0)
-                    .append(';').append(block.category)
-                    .append('\n');
+            BuildVisibility v = block.buildVisibility;
+            if (v == BuildVisibility.shown || v == BuildVisibility.campaignOnly || v == BuildVisibility.editorOnly
+                    || v == BuildVisibility.sandboxOnly || block == Blocks.air) {
+                sbr.append(block.name)
+                        .append(';').append(block.size)
+                        .append(';').append(block.hasPower)
+                        .append(';').append(block.configurable)
+                        .append(';').append(block.subclass.getSimpleName())
+                        .append(';').append(block instanceof PowerNode p ? p.maxNodes : 0)
+                        .append(';').append(block instanceof PowerNode p ? p.laserRange : 0)
+                        .append(';').append(block.category)
+                        .append('\n');
+            }
         }
 
         Fi fi = Core.files.local("mimex-blocks.txt");
