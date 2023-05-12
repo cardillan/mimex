@@ -7,6 +7,10 @@ import mindustry.Vars;
 import mindustry.content.Blocks;
 import mindustry.mod.Mod;
 import mindustry.world.Block;
+import mindustry.world.blocks.distribution.ItemBridge;
+import mindustry.world.blocks.distribution.MassDriver;
+import mindustry.world.blocks.logic.LogicBlock;
+import mindustry.world.blocks.payloads.PayloadMassDriver;
 import mindustry.world.blocks.power.PowerNode;
 import mindustry.world.meta.BuildVisibility;
 
@@ -35,9 +39,9 @@ public class MindustryMetadataExtractor extends Mod{
                 .append(';').append("hasPower")
                 .append(';').append("configurable")
                 .append(';').append("subclass")
-                .append(';').append("maxNodes")
-                .append(';').append("laserRange")
                 .append(';').append("category")
+                .append(';').append("range")
+                .append(';').append("maxNodes")
                 .append('\n');
 
         for (Block block : Vars.content.blocks()) {
@@ -49,9 +53,9 @@ public class MindustryMetadataExtractor extends Mod{
                         .append(';').append(block.hasPower)
                         .append(';').append(block.configurable)
                         .append(';').append(block.subclass.getSimpleName())
-                        .append(';').append(block instanceof PowerNode p ? p.maxNodes : 0)
-                        .append(';').append(block instanceof PowerNode p ? p.laserRange : 0)
                         .append(';').append(block.category)
+                        .append(';').append(getRange(block))
+                        .append(';').append(block instanceof PowerNode p ? p.maxNodes : 0)
                         .append('\n');
             }
         }
@@ -59,6 +63,22 @@ public class MindustryMetadataExtractor extends Mod{
         Fi fi = Core.files.local("mimex-blocks.txt");
         fi.writeString(sbr.toString());
         Log.info("Created local file " + fi.absolutePath());
+    }
+
+    private double getRange(Block block) {
+        if (block instanceof PowerNode p) {
+            return p.laserRange;
+        } else if (block instanceof ItemBridge b) {
+            return b.range;
+        } else if (block instanceof MassDriver d) {
+            return d.range / Vars.tilesize;
+        } else if (block instanceof PayloadMassDriver d) {
+            return d.range / Vars.tilesize;
+        } else if (block instanceof LogicBlock l) {
+            return l.range / Vars.tilesize;
+        } else {
+            return 0;
+        }
     }
 
     private void writeIcons() {
