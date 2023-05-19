@@ -6,3 +6,4 @@ description: "Mindustry Metadata Extractor. Does not have any useful content."
 version: 1.0
 minGameVersion: 140
 java: true
+hidden: true
