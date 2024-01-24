@@ -9,8 +9,8 @@ file(s) in game directory. These files then must be manually copied into the Min
 
 1. Install JDK **17**.
 2. Run `gradlew jar` [1].
-3. The `mimexDesktop.jar` will be in the `build/libs` directory. **Only use this version for obtaining metaga on 
-   desktop. It will not work with Android.**
+3. The `mimexDesktop.jar` will be in the `build/libs` directory. **Only use this version for obtaining metadata on 
+   desktop. It will not work on Android.**
 
 ## Other notes
 
