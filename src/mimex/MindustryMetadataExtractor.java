@@ -219,9 +219,9 @@ public class MindustryMetadataExtractor extends Mod {
 
         for (LAccess l : LAccess.all) {
             sbr.append(l.name())
-                    .append(';').append(senseable.contains(l) ? "1" : "0")
-                    .append(';').append(controls.contains(l) ? "1" : "0")
-                    .append(';').append(settable.contains(l) ? "1" : "0")
+                    .append(';').append(senseable.contains(l))
+                    .append(';').append(controls.contains(l))
+                    .append(';').append(settable.contains(l))
                     .append(';').append(String.join(",", l.params))
                     .append(newLine);
         }
