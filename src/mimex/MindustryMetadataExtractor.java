@@ -28,8 +28,8 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class MindustryMetadataExtractor extends Mod {
+    private static final int expectedVersion = 8;
 
-    private final int expectedVersion = 8;
     private final String newLine = System.lineSeparator();
     private final StringBuilder sbr = new StringBuilder();
 
@@ -54,7 +54,7 @@ public class MindustryMetadataExtractor extends Mod {
     }
 
     private void writeToFile(String file) {
-        Fi fi = Core.files.local("mimex" + expectedVersion + "-" + file + ".txt");
+        Fi fi = Core.files.local("mimex-" + file + ".txt");
         fi.writeString(sbr.toString());
         Log.info("Created local file " + fi.absolutePath());
         sbr.setLength(0);
@@ -289,7 +289,7 @@ public class MindustryMetadataExtractor extends Mod {
                     .append(newLine));
 
             lvars.values().forEach(e -> sbr.append(e.name)
-                    .append(';').append("global")
+                    .append(';').append("local")
                     .append(';').append(e.isobj)
                     .append(';').append(e.constant)
                     .append(';').append(e.numval)
