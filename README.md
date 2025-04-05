@@ -3,7 +3,9 @@
 A support tool for [Mindcode](https://github.com/cardillan/mindcode).
 
 This mod loads into a Mindustry game, reads metadata information from runtime environment and stores them into text 
-file(s) in game directory. These files then must be manually copied into the Mindcode project.   
+file(s) in game directory. These files then must be manually copied into the Mindcode project.
+
+The `main` branch contains the mod version compatible with the latest BE. The other branches contain versions compatible with stable releases. 
 
 ## Building for Desktop Extraction
 
