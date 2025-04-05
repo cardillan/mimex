@@ -22,6 +22,7 @@ ext{
     //windows sucks
     isWindows = System.getProperty("os.name").toLowerCase().contains("windows")
     sdkRoot = System.getenv("ANDROID_HOME") ?: System.getenv("ANDROID_SDK_ROOT")
+    modDir = "${System.getenv("APPDATA")}\\Mindustry\\mods"
 }
 
 //java 8 backwards compatibility flag
@@ -33,7 +34,8 @@ allprojects{
 
 dependencies{
     compileOnly "com.github.Anuken.Arc:arc-core:$mindustryVersion"
-    compileOnly "com.github.Anuken.Mindustry:core:$mindustryVersion"
+//    compileOnly "com.github.Anuken.Mindustry:core:$mindustryVersion"
+    compileOnly 'com.github.Anuken:MindustryJitpack:47cf3c4'
 
     annotationProcessor "com.github.Anuken:jabel:$jabelVersion"
 }
