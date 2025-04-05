@@ -17,7 +17,7 @@ java{
 
 ext{
     //the build number that this mod is made for
-    mindustryVersion = 'v146'
+    mindustryVersion = 'v126.2'
     jabelVersion = "93fde537c7"
     //windows sucks
     isWindows = System.getProperty("os.name").toLowerCase().contains("windows")
@@ -48,27 +48,6 @@ configurations.all{
     }
 }
 
-task jarAndroid{
-    dependsOn "jar"
-
-    doLast{
-        if(!sdkRoot || !new File(sdkRoot).exists()) throw new GradleException("No valid Android SDK found. Ensure that ANDROID_HOME is set to your Android SDK directory.");
-
-        def platformRoot = new File("$sdkRoot/platforms/").listFiles().sort().reverse().find{ f -> new File(f, "android.jar").exists()}
-
-        if(!platformRoot) throw new GradleException("No android.jar found. Ensure that you have an Android platform installed.")
-
-        //collect dependencies needed for desugaring
-        def dependencies = (configurations.compileClasspath.asList() + configurations.runtimeClasspath.asList() + [new File(platformRoot, "android.jar")]).collect{ "--classpath $it.path" }.join(" ")
-
-        def d8 = isWindows ? "d8.bat" : "d8"
-
-        //dex and desugar files - this requires d8 in your PATH
-        "$d8 $dependencies --min-api 14 --output ${project.archivesBaseName}Android.jar ${project.archivesBaseName}Desktop.jar"
-            .execute(null, new File("$buildDir/libs")).waitForProcessOutput(System.out, System.err)
-    }
-}
-
 jar{
     archiveFileName = "${base.archivesBaseName}Desktop.jar"
 
@@ -86,7 +65,6 @@ jar{
 }
 
 task deploy(type: Jar){
-    dependsOn jarAndroid
     dependsOn jar
     archiveFileName = "${base.archivesBaseName}.jar"
 

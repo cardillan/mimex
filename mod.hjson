@@ -1,9 +1,9 @@
-displayName: "Mindustry Metadata Extractor"
-name: "mindustry-metadata-extractor"
+displayName: "Mindustry Metadata Extractor, ver 6"
+name: "mindustry-metadata-extractor-6"
 author: "Cardillan"
 main: "mimex.MindustryMetadataExtractor"
 description: "Mindustry Metadata Extractor. Does not have any useful content."
 version: 1.0
-minGameVersion: 146
+minGameVersion: 126
 java: true
 hidden: true
