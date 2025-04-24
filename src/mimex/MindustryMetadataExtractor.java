@@ -25,6 +25,8 @@ public class MindustryMetadataExtractor extends Mod {
             new LAccessExtractor().extract();
             new VarsExtractor().extract();
             new SoundsExtractor().extract();
+        } else {
+            Log.warn("Mimex Mindustry version mismatch. Expected: " + expectedVersion + ", got: " + Version.number);
         }
     }
 }
