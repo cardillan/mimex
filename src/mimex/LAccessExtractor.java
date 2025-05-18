@@ -1,6 +1,5 @@
 package mimex;
 
-import mindustry.Vars;
 import mindustry.logic.LAccess;
 
 import java.util.Arrays;

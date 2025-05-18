@@ -23,6 +23,12 @@ public class MindustryMetadataExtractor extends Mod {
             new UnitsExtractor().extract();
             new LAccessExtractor().extract();
             new VarsExtractor().extract();
+
+            new BlockFlagsExtractor().extract();
+            new ContentsExtractor().extract();
+            new RadarSortsExtractor().extract();
+            new RadarTargetsExtractor().extract();
+            new StatusEffectsExtractor().extract();
         } else {
             Log.warn("Mimex Mindustry version mismatch. Expected: " + expectedVersion + ", got: " + Version.number);
         }
