@@ -2,7 +2,7 @@ package mimex;
 
 import mindustry.Vars;
 
-public class ItemsExtractor extends MetadataExtractor {
+public class StatusEffectsExtractor extends MetadataExtractor {
 
     @Override
     public void extract() {
@@ -11,11 +11,11 @@ public class ItemsExtractor extends MetadataExtractor {
                 .append(';').append("logicId")
                 .append(newLine);
 
-        Vars.content.items().each(item -> sbr.append(item.name)
+        Vars.content.statusEffects().each(item -> sbr.append(item.name)
                 .append(';').append(item.id)
                 .append(';').append(LogicIdConvertor.lookupLogicId(item))
                 .append(newLine));
 
-        writeToFile("items");
+        writeToFile("status-effects");
     }
 }

@@ -13,7 +13,7 @@ public class LiquidsExtractor extends MetadataExtractor {
 
         Vars.content.liquids().each(liquid -> sbr.append(liquid.name)
                 .append(';').append(liquid.id)
-                .append(';').append(Vars.logicVars.lookupLogicId(liquid))
+                .append(';').append(LogicIdConvertor.lookupLogicId(liquid))
                 .append(newLine));
 
         writeToFile("liquids");

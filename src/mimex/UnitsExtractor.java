@@ -13,7 +13,7 @@ public class UnitsExtractor extends MetadataExtractor {
 
         Vars.content.units().each(unit -> sbr.append(unit.name)
                 .append(';').append(unit.id)
-                .append(';').append(Vars.logicVars.lookupLogicId(unit))
+                .append(';').append(LogicIdConvertor.lookupLogicId(unit))
                 .append(newLine));
 
         writeToFile("units");

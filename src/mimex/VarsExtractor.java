@@ -24,6 +24,7 @@ public class VarsExtractor extends MetadataExtractor {
 
             Field vars = GlobalVars.class.getDeclaredField("vars");
             vars.setAccessible(true);
+            @SuppressWarnings("unchecked")
             Seq<LExecutor.Var> globalVars = (Seq<LExecutor.Var>) vars.get(Vars.logicVars);
 
             globalVars.forEach( e -> sbr.append(e.name)
