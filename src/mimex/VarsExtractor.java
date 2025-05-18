@@ -27,6 +27,7 @@ public class VarsExtractor extends MetadataExtractor {
 
             Field vars = GlobalVars.class.getDeclaredField("vars");
             vars.setAccessible(true);
+            @SuppressWarnings("unchecked")
             ObjectMap<String, LVar> globalVars = (ObjectMap<String, LVar>) vars.get(Vars.logicVars);
 
             List<LVar> allVars = new ArrayList<>();

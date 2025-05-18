@@ -1,10 +1,6 @@
 package mimex;
 
 import mindustry.logic.RadarTarget;
-import mindustry.logic.TileLayer;
-
-import java.util.Arrays;
-import java.util.HashSet;
 
 public class RadarTargetsExtractor extends MetadataExtractor {
 

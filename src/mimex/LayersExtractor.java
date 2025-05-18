@@ -1,6 +1,5 @@
 package mimex;
 
-import mindustry.logic.LAccess;
 import mindustry.logic.TileLayer;
 
 import java.util.Arrays;

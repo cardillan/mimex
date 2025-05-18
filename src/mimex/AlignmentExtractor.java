@@ -1,9 +1,6 @@
 package mimex;
 
-import arc.struct.ObjectMap;
-import mindustry.Vars;
 import mindustry.logic.LStatements;
-import mindustry.logic.LVar;
 
 import java.lang.reflect.Field;
 
