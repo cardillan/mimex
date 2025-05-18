@@ -2,7 +2,7 @@ package mimex;
 
 import mindustry.Vars;
 
-public class UnitsExtractor extends MetadataExtractor {
+public class WeathersExtractor extends MetadataExtractor {
 
     @Override
     public void extract() {
@@ -11,11 +11,11 @@ public class UnitsExtractor extends MetadataExtractor {
                 .append(';').append("logicId")
                 .append(newLine);
 
-        Vars.content.units().each(unit -> sbr.append(unit.name)
-                .append(';').append(unit.id)
-                .append(';').append(LogicIdConvertor.lookupLogicId(unit))
+        Vars.content.weathers().each(item -> sbr.append(item.name)
+                .append(';').append(item.id)
+                .append(';').append(LogicIdConvertor.lookupLogicId(item))
                 .append(newLine));
 
-        writeToFile("units");
+        writeToFile("weathers");
     }
 }

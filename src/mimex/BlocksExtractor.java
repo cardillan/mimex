@@ -89,7 +89,7 @@ public class BlocksExtractor extends MetadataExtractor {
         Vars.content.blocks().each(block -> {
             sbr.append(block.name)
                     .append(';').append(block.id)
-                    .append(';').append(Vars.logicVars.lookupLogicId(block))
+                    .append(';').append(LogicIdConvertor.lookupLogicId(block))
                     .append(';').append(visibilityMap.get(block.buildVisibility))
                     .append(';').append(block.size)
                     .append(';').append(block.subclass.getSimpleName())
