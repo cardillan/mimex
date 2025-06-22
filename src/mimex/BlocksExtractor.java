@@ -4,6 +4,7 @@ import mindustry.Vars;
 import mindustry.world.Block;
 import mindustry.world.blocks.distribution.ItemBridge;
 import mindustry.world.blocks.distribution.MassDriver;
+import mindustry.world.blocks.legacy.LegacyBlock;
 import mindustry.world.blocks.logic.LogicBlock;
 import mindustry.world.blocks.payloads.PayloadMassDriver;
 import mindustry.world.blocks.power.PowerNode;
@@ -63,6 +64,7 @@ public class BlocksExtractor extends MetadataExtractor {
                 .append(';').append("visibility")
                 .append(';').append("size")
                 .append(';').append("subclass")
+                .append(';').append("legacy")
                 .append(';').append("configurable")
                 .append(';').append("category")
                 .append(';').append("range")
@@ -93,6 +95,7 @@ public class BlocksExtractor extends MetadataExtractor {
                     .append(';').append(visibilityMap.get(block.buildVisibility))
                     .append(';').append(block.size)
                     .append(';').append(block.subclass.getSimpleName())
+                    .append(';').append(block instanceof LegacyBlock)
                     .append(';').append(block.configurable)
                     .append(';').append(block.category)
                     .append(';').append(getRange(block))
