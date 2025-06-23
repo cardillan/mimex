@@ -26,8 +26,18 @@ public class MindustryMetadataExtractor extends Mod {
             new VarsExtractor().extract();
 
             new BlockFlagsExtractor().extract();
+            new ConditionsExtractor().extract();
             new ContentsExtractor().extract();
+            new CutsceneActionsExtractor().extract();
+            new EffectsExtractor().extract();
+            new FetchTypeExtractor().extract();
+            new GraphicsTypesExtractor().extract();
             new LayersExtractor().extract();
+            new LLocateExtractor().extract();
+            new LogicRuleExtractor().extract();
+            new LUnitControlExtractor().extract();
+            new MessageTypeExtractor().extract();
+            new OperationsExtractor().extract();
             new RadarSortsExtractor().extract();
             new RadarTargetsExtractor().extract();
             new StatusEffectsExtractor().extract();
