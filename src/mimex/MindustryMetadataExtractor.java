@@ -6,15 +6,18 @@ import mindustry.mod.Mod;
 
 public class MindustryMetadataExtractor extends Mod {
     private static final int expectedVersion = 8;
+    private static final int minBuild = 26094;
+    private static final int maxBuild = 99999;
 
     public MindustryMetadataExtractor() {
         Log.info("MindustryMetadataExtractor constructor.");
+        Log.info("Mindustry version: " + Version.number + ", build: " + Version.build + ", revision: " + Version.revision + ".");
     }
 
     @Override
     public void init() {
         super.init();
-        if (Version.number == expectedVersion) {
+        if (Version.number == expectedVersion && Version.build >= minBuild && Version.build <= maxBuild) {
             new IconsExtractor().extract();
             new ColorsExtractor().extract();
             new BlocksExtractor().extract();
