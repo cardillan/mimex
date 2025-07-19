@@ -6,8 +6,8 @@ import mindustry.mod.Mod;
 
 public class MindustryMetadataExtractor extends Mod {
     private static final int expectedVersion = 8;
-    private static final int minBuild = 26094;
-    private static final int maxBuild = 99999;
+    private static final int minBuild = 149;
+    private static final int maxBuild = 149;
 
     public MindustryMetadataExtractor() {
         Log.info("MindustryMetadataExtractor constructor.");
