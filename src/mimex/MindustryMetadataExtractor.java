@@ -29,6 +29,9 @@ public class MindustryMetadataExtractor extends Mod {
             new VarsExtractor().extract();
             new SoundsExtractor().extract();
 
+            new TeamsExtractor().extract();
+            new BlockRequirementsExtractor().extract();
+
             new AlignmentExtractor().extract();
             new BlockFlagsExtractor().extract();
             new ConditionsExtractor().extract();
@@ -50,7 +53,8 @@ public class MindustryMetadataExtractor extends Mod {
             new StatusEffectsExtractor().extract();
             new WeathersExtractor().extract();
         } else {
-            Log.warn("Mimex Mindustry version mismatch. Expected: " + expectedVersion + ", got: " + Version.number);
+            Log.warn(String.format("Mimex Mindustry version mismatch. Expected: %d (build %d to %d), got: %d (build %d)",
+                    expectedVersion, minBuild, maxBuild, Version.number, Version.build));
         }
     }
 }
