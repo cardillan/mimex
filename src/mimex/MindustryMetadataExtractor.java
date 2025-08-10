@@ -6,6 +6,8 @@ import mindustry.mod.Mod;
 
 public class MindustryMetadataExtractor extends Mod {
     private static final int expectedVersion = 6;
+    private static final int minBuild = 126;
+    private static final int maxBuild = 126;
 
     public MindustryMetadataExtractor() {
         Log.info("MindustryMetadataExtractor constructor.");
@@ -24,6 +26,9 @@ public class MindustryMetadataExtractor extends Mod {
             new LAccessExtractor().extract();
             new VarsExtractor().extract();
 
+            new TeamsExtractor().extract();
+            new BlockRequirementsExtractor().extract();
+
             new BlockFlagsExtractor().extract();
             new ConditionsExtractor().extract();
             new ContentsExtractor().extract();
@@ -35,7 +40,8 @@ public class MindustryMetadataExtractor extends Mod {
             new RadarTargetsExtractor().extract();
             new StatusEffectsExtractor().extract();
         } else {
-            Log.warn("Mimex Mindustry version mismatch. Expected: " + expectedVersion + ", got: " + Version.number);
+            Log.warn(String.format("Mimex Mindustry version mismatch. Expected: %d (build %d to %d), got: %d (build %d)",
+                    expectedVersion, minBuild, maxBuild, Version.number, Version.build));
         }
     }
 }

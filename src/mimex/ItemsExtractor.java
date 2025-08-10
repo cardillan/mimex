@@ -9,11 +9,13 @@ public class ItemsExtractor extends MetadataExtractor {
         sbr.append("name")
                 .append(';').append("id")
                 .append(';').append("logicId")
+                .append(';').append("color")
                 .append(newLine);
 
         Vars.content.items().each(item -> sbr.append(item.name)
                 .append(';').append(item.id)
                 .append(';').append(-1)
+                .append(';').append(item.color)
                 .append(newLine));
 
         writeToFile("items");
