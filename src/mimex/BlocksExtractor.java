@@ -49,10 +49,16 @@ public class BlocksExtractor extends MetadataExtractor {
         }
     }
 
-    private void appendUnitPlans(UnitFactory unitFactory) {
-        for (int i = 0; i < unitFactory.plans.size; i++) {
-            if (i > 0) sbr.append('|');
-            sbr.append(unitFactory.plans.get(i).unit.name);
+    private String unitPlans(Block block) {
+        if (block instanceof UnitFactory unitFactory) {
+            StringBuilder sbr = new StringBuilder();
+            for (int i = 0; i < unitFactory.plans.size; i++) {
+                if (i > 0) sbr.append('|');
+                sbr.append(unitFactory.plans.get(i).unit.name);
+            }
+            return sbr.toString();
+        } else {
+            return "";
         }
     }
 
@@ -86,6 +92,14 @@ public class BlocksExtractor extends MetadataExtractor {
                 .append(';').append("outputFacing")
                 .append(';').append("rotate")
                 .append(';').append("unitPlans")
+                .append(';').append("color")
+                .append(';').append("outlineColor")
+                .append(';').append("lightColor")
+                .append(';').append("health")
+                .append(';').append("solid")
+                .append(';').append("powerCapacity")
+                .append(';').append("powerStorage")
+                .append(';').append("configSenseable")
                 .append(newLine);
 
         Vars.content.blocks().each(block -> {
@@ -116,11 +130,16 @@ public class BlocksExtractor extends MetadataExtractor {
                     .append(';').append(block instanceof PowerNode p ? p.maxNodes : 0)
                     .append(';').append(block.outputFacing)
                     .append(';').append(block.rotate)
-                    .append(';');
-            if (block instanceof UnitFactory f) {
-                appendUnitPlans(f);
-            }
-            sbr.append(newLine);
+                    .append(';').append(unitPlans(block))
+                    .append(';').append(block.mapColor)
+                    .append(';').append(block.outlineColor)
+                    .append(';').append(block.lightColor)
+                    .append(';').append(block.health)
+                    .append(';').append(block.solid)
+                    .append(';').append(block.consPower == null ? 0f : block.consPower.usage)
+                    .append(';').append(block.consPower == null ? 0f : block.consPower.capacity)
+                    .append(';').append(block.configSenseable())
+                    .append(newLine);
         });
 
         writeToFile("blocks");
