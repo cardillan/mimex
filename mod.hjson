@@ -1,5 +1,5 @@
 displayName: "Mindustry Metadata Extractor (v149)"
-name: "mindustry-metadata-extractor"
+name: "mindustry-metadata-extractor-149"
 author: "Cardillan"
 main: "mimex.MindustryMetadataExtractor"
 description: "Mindustry Metadata Extractor. Does not have any useful content."
