@@ -31,6 +31,7 @@ public class MindustryMetadataExtractor extends Mod {
 
             new TeamsExtractor().extract();
             new BlockRequirementsExtractor().extract();
+            new TextureExtractor().extract();
 
             new AlignmentExtractor().extract();
             new BlockFlagsExtractor().extract();
