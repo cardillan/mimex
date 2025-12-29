@@ -8,6 +8,7 @@ public class TeamsExtractor extends MetadataExtractor {
     public void extract() {
         sbr.append("name")
                 .append(';').append("id")
+                .append(';').append("logicId")
                 .append(';').append("color")
                 .append(';').append("emoji")
                 .append(';').append("hasPalette")
@@ -18,6 +19,7 @@ public class TeamsExtractor extends MetadataExtractor {
 
         for (Team team : Team.all) {
             sbr.append(team.name)
+                    .append(';').append(team.id)
                     .append(';').append(team.id)
                     .append(';').append(team.color)
                     .append(';').append(team.emoji)
