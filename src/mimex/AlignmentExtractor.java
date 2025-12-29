@@ -1,9 +1,6 @@
 package mimex;
 
 import mindustry.logic.LStatement;
-import mindustry.logic.LStatements;
-
-import java.lang.reflect.Field;
 
 public class AlignmentExtractor extends MetadataExtractor {
 

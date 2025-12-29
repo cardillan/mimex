@@ -53,6 +53,8 @@ public class MindustryMetadataExtractor extends Mod {
             new RadarTargetsExtractor().extract();
             new StatusEffectsExtractor().extract();
             new WeathersExtractor().extract();
+
+            new LogicStatementExtractor().extract();
         } else {
             Log.warn(String.format("Mimex Mindustry version mismatch. Expected: %d (build %d to %d), got: %d (build %d)",
                     expectedVersion, minBuild, maxBuild, Version.number, Version.build));
