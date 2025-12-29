@@ -2,8 +2,8 @@
 
 A support tool for [Mindcode](https://github.com/cardillan/mindcode).
 
-This mod loads into a Mindustry game, reads metadata information from runtime environment and stores them into text 
-file(s) in game directory. These files then must be manually copied into the Mindcode project.
+This mod loads into a Mindustry game, reads metadata information from a runtime environment and stores them into text 
+file(s) in the game directory. These files then must be manually copied into the Mindcode project.
 
 The `main` branch contains the mod version compatible with the latest BE. The other branches contain versions compatible with stable releases. 
 
@@ -21,4 +21,3 @@ There's no need to build or run this mod on other platforms.
 --- 
 
 *[1]* *On Linux/Mac it's `./gradlew`, but if you're using Linux I assume you know how to run executables properly anyway.*  
-
