@@ -92,6 +92,7 @@ public class BlocksExtractor extends MetadataExtractor {
                 .append(';').append("powerCapacity")
                 .append(';').append("powerStorage")
                 .append(';').append("configSenseable")
+                .append(';').append("hasBuilding")
                 .append(newLine);
 
         Vars.content.blocks().each(block -> {
@@ -131,6 +132,7 @@ public class BlocksExtractor extends MetadataExtractor {
                     .append(';').append(block.consPower == null ? 0f : block.consPower.usage)
                     .append(';').append(block.consPower == null ? 0f : block.consPower.capacity)
                     .append(';').append(block.configSenseable())
+                    .append(';').append(block.hasBuilding())
                     .append(newLine);
         });
 
