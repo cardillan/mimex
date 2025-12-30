@@ -27,7 +27,7 @@ public class LogicStatementExtractor extends MetadataExtractor {
 
             createNameAndArguments(statement)
                     .append(';').append(statement.name())
-                    .append(';').append(statement.typeName())
+                    .append(';').append(statement.name().replace(" ", ""))
                     .append(';').append(statement.hidden())
                     .append(';').append(statement.privileged())
                     .append(';').append(statement.nonPrivileged())
