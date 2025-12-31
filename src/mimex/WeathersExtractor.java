@@ -1,8 +1,13 @@
 package mimex;
 
 import mindustry.Vars;
+import mindustry.type.Weather;
 
-public class WeathersExtractor extends MetadataExtractor {
+public class WeathersExtractor extends ClassMetadataExtractor {
+
+    public WeathersExtractor() {
+        super(Weather.class);
+    }
 
     @Override
     public void extract() {

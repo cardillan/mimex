@@ -14,8 +14,12 @@ abstract class MetadataExtractor {
 
     public abstract void extract();
 
+    protected String getFileName(String file) {
+        return "mimex-" + file + ".txt";
+    }
+
     protected void writeToFile(String file) {
-        Fi fi = Core.files.local("mimex-" + file + ".txt");
+        Fi fi = Core.files.local(getFileName(file));
         fi.writeString(sbr.toString());
         Log.info("Created local file " + fi.absolutePath());
         sbr.setLength(0);

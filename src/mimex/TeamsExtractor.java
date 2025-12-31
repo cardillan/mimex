@@ -2,7 +2,11 @@ package mimex;
 
 import mindustry.game.Team;
 
-public class TeamsExtractor extends MetadataExtractor {
+public class TeamsExtractor extends ClassMetadataExtractor {
+
+    public TeamsExtractor() {
+        super(Team.class);
+    }
 
     @Override
     public void extract() {

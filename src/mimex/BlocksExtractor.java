@@ -14,7 +14,12 @@ import mindustry.world.meta.BuildVisibility;
 import java.util.IdentityHashMap;
 import java.util.Map;
 
-public class BlocksExtractor extends MetadataExtractor {
+public class BlocksExtractor extends ClassMetadataExtractor {
+
+    public BlocksExtractor() {
+        super(Block.class);
+    }
+
     private final Map<BuildVisibility, String> visibilityMap = new IdentityHashMap<>();
 
     {
