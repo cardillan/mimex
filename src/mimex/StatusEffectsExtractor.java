@@ -1,8 +1,13 @@
 package mimex;
 
 import mindustry.Vars;
+import mindustry.type.StatusEffect;
 
-public class StatusEffectsExtractor extends MetadataExtractor {
+public class StatusEffectsExtractor extends ClassMetadataExtractor {
+
+    public StatusEffectsExtractor() {
+        super(StatusEffect.class);
+    }
 
     @Override
     public void extract() {

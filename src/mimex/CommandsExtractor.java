@@ -3,7 +3,11 @@ package mimex;
 import mindustry.Vars;
 import mindustry.ai.UnitCommand;
 
-public class CommandsExtractor extends MetadataExtractor {
+public class CommandsExtractor extends ClassMetadataExtractor {
+
+    public CommandsExtractor() {
+        super(UnitCommand.class);
+    }
 
     @Override
     public void extract() {

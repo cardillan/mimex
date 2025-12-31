@@ -2,11 +2,16 @@ package mimex;
 
 import mindustry.Vars;
 import mindustry.gen.Payloadc;
+import mindustry.gen.Unit;
 
 import static mindustry.Vars.tilePayload;
 import static mindustry.Vars.tilesize;
 
-public class UnitsExtractor extends MetadataExtractor {
+public class UnitsExtractor extends ClassMetadataExtractor {
+
+    public UnitsExtractor() {
+        super(Unit.class);
+    }
 
     @Override
     public void extract() {
