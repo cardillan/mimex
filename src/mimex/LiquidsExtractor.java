@@ -1,8 +1,13 @@
 package mimex;
 
 import mindustry.Vars;
+import mindustry.type.Liquid;
 
-public class LiquidsExtractor extends MetadataExtractor {
+public class LiquidsExtractor extends ClassMetadataExtractor {
+
+    public LiquidsExtractor() {
+        super(Liquid.class);
+    }
 
     @Override
     public void extract() {
