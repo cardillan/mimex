@@ -6,16 +6,20 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
-public class LAccessExtractor extends MetadataExtractor {
+public class LAccessExtractor extends ClassMetadataExtractor {
+
+    public LAccessExtractor() {
+        super(LAccess.class);
+    }
 
     @Override
     public void extract() {
         sbr.append("name")
                 .append(';').append("ordinal")
                 .append(';').append("isObj")
-                .append(';').append("senseable")
-                .append(';').append("controls")
-                .append(';').append("settable")
+                .append(';').append("sensor")
+                .append(';').append("control")
+                .append(';').append("setprop")
                 .append(';').append("parameters")
                 .append(newLine);
 

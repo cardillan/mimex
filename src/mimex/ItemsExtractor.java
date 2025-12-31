@@ -1,8 +1,13 @@
 package mimex;
 
 import mindustry.Vars;
+import mindustry.type.Item;
 
-public class ItemsExtractor extends MetadataExtractor {
+public class ItemsExtractor extends ClassMetadataExtractor {
+
+    public ItemsExtractor() {
+        super(Item.class);
+    }
 
     @Override
     public void extract() {

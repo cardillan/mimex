@@ -5,12 +5,19 @@ import arc.func.Prov;
 import mindustry.gen.LogicIO;
 import mindustry.logic.LStatement;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
+import java.util.ArrayList;
+import java.util.List;
+
 public class LogicStatementExtractor extends MetadataExtractor {
 
     @Override
     public void extract() {
         sbr.append("opcode")
                 .append(';').append("arguments")
+                .append(';').append("argumentTypes")
+                .append(';').append("argumentNames")
                 .append(';').append("name")
                 .append(';').append("typeName")
                 .append(';').append("hidden")
@@ -26,6 +33,8 @@ public class LogicStatementExtractor extends MetadataExtractor {
             LStatement statement = provider.get();
 
             createNameAndArguments(statement)
+                    .append(';').append(getArgumentTypes(statement.getClass()))
+                    .append(';').append(getArgumentNames(statement.getClass()))
                     .append(';').append(statement.name())
                     .append(';').append(statement.name().replace(" ", ""))
                     .append(';').append(statement.hidden())
@@ -64,13 +73,61 @@ public class LogicStatementExtractor extends MetadataExtractor {
         StringBuilder sb = new StringBuilder();
         for (char c : text.toCharArray()) {
             switch (c) {
-                case '\n': sb.append("%0A"); break;
-                case ';': sb.append("%3B"); break;
-                case '%': sb.append("%25"); break;
-                case '+': sb.append("%2B"); break;
-                default: sb.append(c);
+                case '\n':
+                    sb.append("%0A");
+                    break;
+                case ';':
+                    sb.append("%3B");
+                    break;
+                case '%':
+                    sb.append("%25");
+                    break;
+                case '+':
+                    sb.append("%2B");
+                    break;
+                default:
+                    sb.append(c);
             }
         }
         return sb.toString();
+    }
+
+    private static String getArgumentTypes(Class<?> statementClass) {
+        List<String> types = new ArrayList<>();
+
+        while (!LStatement.class.equals(statementClass)) {
+            for (Field field : statementClass.getDeclaredFields()) {
+                int modifiers = field.getModifiers();
+
+                if (!Modifier.isStatic(modifiers) && !Modifier.isTransient(modifiers)) {
+                    if (field.getType().equals(String.class)) {
+                        types.add("var");
+                    } else {
+                        types.add(field.getType().getSimpleName());
+                    }
+                }
+            }
+
+            statementClass = statementClass.getSuperclass();
+        }
+        return String.join(" ", types);
+    }
+
+    private static String getArgumentNames(Class<?> statementClass) {
+        List<String> types = new ArrayList<>();
+
+        while (!LStatement.class.equals(statementClass)) {
+            for (Field field : statementClass.getDeclaredFields()) {
+                int modifiers = field.getModifiers();
+
+                if (!Modifier.isStatic(modifiers) && !Modifier.isTransient(modifiers)) {
+                    types.add(field.getName());
+                }
+            }
+
+            statementClass = statementClass.getSuperclass();
+        }
+
+        return String.join(" ", types);
     }
 }
