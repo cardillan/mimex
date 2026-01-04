@@ -18,6 +18,8 @@ public class VarsExtractor extends MetadataExtractor {
                     .append(';').append("isobj")
                     .append(';').append("constant")
                     .append(';').append("numval")
+                    .append(';').append("isnull")
+                    .append(';').append("privileged")
                     .append(newLine);
 
             LAssembler lAssembler = LAssembler.assemble("noop", true);
@@ -32,13 +34,17 @@ public class VarsExtractor extends MetadataExtractor {
                     .append(';').append(e.isobj)
                     .append(';').append(e.constant)
                     .append(';').append(e.numval)
+                    .append(';').append(!e.isobj || e.objval == null)
+                    .append(';').append(false)
                     .append(newLine));
 
             lAssembler.vars.forEach(e -> sbr.append(e.key)
                     .append(';').append("local")
-                    .append(';').append(false)
+                    .append(';').append(e.value.value == null)
                     .append(';').append(e.value.constant)
                     .append(';').append(0.0)
+                    .append(';').append(true)
+                    .append(';').append(false)
                     .append(newLine));
 
             writeToFile("vars");
