@@ -10,6 +10,7 @@ public class AlignmentExtractor extends MetadataExtractor {
     public void extract() {
         try {
             sbr.append("name")
+                    .append(';').append("draw")
                     .append(newLine);
 
             Field alignsField = LStatements.DrawStatement.class.getDeclaredField("aligns");
@@ -18,6 +19,7 @@ public class AlignmentExtractor extends MetadataExtractor {
 
             for (String name : aligns) {
                 sbr.append(name)
+                        .append(';').append(true)
                         .append(newLine);
             }
 
