@@ -4,7 +4,6 @@ import arc.util.Log;
 import mindustry.core.Version;
 import mindustry.mod.Mod;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -38,6 +37,7 @@ public class MindustryMetadataExtractor extends Mod {
             new LAccessExtractor().extract();
             new VarsExtractor().extract();
             new SoundsExtractor().extract();
+            new QueryTypeExtractor().extract();
 
             new TeamsExtractor().extract();
             new BlockRequirementsExtractor().extract();

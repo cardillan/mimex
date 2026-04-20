@@ -5,6 +5,7 @@ import arc.struct.ObjectSet;
 import mindustry.Vars;
 import mindustry.logic.GlobalVars;
 import mindustry.logic.LAssembler;
+import mindustry.logic.LExecutor;
 import mindustry.logic.LVar;
 
 import java.lang.reflect.Field;
@@ -27,6 +28,8 @@ public class VarsExtractor extends MetadataExtractor {
                     .append(newLine);
 
             LAssembler lAssembler = LAssembler.assemble("noop", true);
+            LExecutor executor = new LExecutor();
+            executor.load(lAssembler);
 
             Field varsField = GlobalVars.class.getDeclaredField("vars");
             varsField.setAccessible(true);
@@ -37,6 +40,9 @@ public class VarsExtractor extends MetadataExtractor {
             privilegedNamesField.setAccessible(true);
             @SuppressWarnings("unchecked")
             ObjectSet<String> privilegedNames = (ObjectSet<String>) privilegedNamesField.get(Vars.logicVars);
+
+            // We can't easily determine @queries is pivileged from the variable definition
+            privilegedNames.add("@queries");
 
             List<LVar> allVars = new ArrayList<>();
             lAssembler.vars.values().forEach(allVars::add);
