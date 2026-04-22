@@ -38,6 +38,7 @@ public class MindustryMetadataExtractor extends Mod {
             new VarsExtractor().extract();
             new SoundsExtractor().extract();
             new QueryTypeExtractor().extract();
+            new QueryShapeExtractor().extract();
 
             new TeamsExtractor().extract();
             new BlockRequirementsExtractor().extract();
