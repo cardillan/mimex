@@ -15,12 +15,12 @@ public class TextureExtractor extends MetadataExtractor {
     public void extract() {
         try {
             sbr.append("name")
-                    .append(';').append("width")
-                    .append(';').append("height")
                     .append(newLine);
 
             Field field = TextureAtlas.class.getDeclaredField("regionmap");
             field.setAccessible(true);
+
+            @SuppressWarnings("unchecked")
             ObjectMap<String, TextureAtlas.AtlasRegion> map = (ObjectMap<String, TextureAtlas.AtlasRegion>) field.get(Core.atlas);
 
             List<TextureAtlas.AtlasRegion> data = new ArrayList<>();
@@ -29,8 +29,6 @@ public class TextureExtractor extends MetadataExtractor {
 
             for (TextureAtlas.AtlasRegion region : data) {
                 sbr.append(region.name)
-                        .append(';').append(region.width)
-                        .append(';').append(region.height)
                         .append(newLine);
             }
 
