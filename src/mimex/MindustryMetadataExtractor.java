@@ -58,6 +58,7 @@ public class MindustryMetadataExtractor extends Mod {
             new LogicRuleExtractor().extract();
             new LUnitControlExtractor().extract();
             new MarkersExtractor().extract();
+            new MusicExtractor().extract();
             new MessageTypeExtractor().extract();
             new OperationsExtractor().extract();
             new RadarSortsExtractor().extract();
