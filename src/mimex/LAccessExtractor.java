@@ -17,6 +17,7 @@ public class LAccessExtractor extends ClassMetadataExtractor {
                 .append(';').append("ordinal")
                 .append(';').append("isObj")
                 .append(';').append("sensor")
+                .append(';').append("privileged")
                 .append(';').append("control")
                 .append(';').append("setprop")
                 .append(';').append("parameters")
@@ -24,6 +25,7 @@ public class LAccessExtractor extends ClassMetadataExtractor {
 
 
         HashSet<LAccess> senseable = new HashSet<>(Arrays.asList(LAccess.senseable));
+        HashSet<LAccess> privileged = new HashSet<>(Arrays.asList(LAccess.senseablePrivileged));
         HashSet<LAccess> controls = new HashSet<>(Arrays.asList(LAccess.controls));
         HashSet<LAccess> settable = new HashSet<>(Arrays.asList(LAccess.settable));
 
@@ -32,6 +34,7 @@ public class LAccessExtractor extends ClassMetadataExtractor {
                     .append(';').append(l.ordinal())
                     .append(';').append(l.isObj)
                     .append(';').append(senseable.contains(l))
+                    .append(';').append(privileged.contains(l))
                     .append(';').append(controls.contains(l))
                     .append(';').append(settable.contains(l))
                     .append(';').append(String.join(",", l.params))

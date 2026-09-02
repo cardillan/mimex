@@ -92,6 +92,9 @@ public class BlocksExtractor extends ClassMetadataExtractor {
                 .append(';').append("powerStorage")
                 .append(';').append("configSenseable")
                 .append(';').append("hasBuilding")
+                .append(';').append("iptDefault")
+                .append(';').append("iptLimit")
+                .append(';').append("instructionScale")
                 .append(newLine);
 
         Vars.content.blocks().each(block -> {
@@ -132,6 +135,9 @@ public class BlocksExtractor extends ClassMetadataExtractor {
                     .append(';').append(block.consPower == null ? 0f : block.consPower.capacity)
                     .append(';').append(block.configSenseable())
                     .append(';').append(block.hasBuilding())
+                    .append(';').append(block instanceof LogicBlock b ? b.instructionsPerTick : 0)
+                    .append(';').append(block instanceof LogicBlock b ? b.maxInstructionsPerTick : 0)
+                    .append(';').append(block instanceof LogicBlock b ? b.maxInstructionScale : 0)
                     .append(newLine);
         });
 
