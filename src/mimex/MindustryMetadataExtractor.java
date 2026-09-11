@@ -9,8 +9,8 @@ import java.util.TreeMap;
 
 public class MindustryMetadataExtractor extends Mod {
     private static final int expectedVersion = 8;
-    private static final int minBuild = 26094;
-    private static final int maxBuild = 99999;
+    private static final int minBuild = 160;
+    private static final int maxBuild = 160;
 
     private static final Map<String, String> classMap = new TreeMap<>();
 
