@@ -28,6 +28,7 @@ public class TextureExtractor extends MetadataExtractor {
             data.sort(Comparator.comparing(a -> a.name));
 
             for (TextureAtlas.AtlasRegion region : data) {
+                if (region.name.contains("mindustry-metadata-extractor")) continue;
                 sbr.append(region.name)
                         .append(newLine);
             }
