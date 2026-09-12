@@ -26,7 +26,7 @@ public class TeamsExtractor extends ClassMetadataExtractor {
                     .append(';').append(team.id)
                     .append(';').append(team.id)
                     .append(';').append(team.color)
-                    .append(';').append(team.emoji)
+                    .append(';').append("")
                     .append(';').append(team.hasPalette)
                     .append(';').append(team.palette[0])
                     .append(';').append(team.palette[1])

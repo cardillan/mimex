@@ -38,12 +38,12 @@ public class LogicStatementExtractor extends MetadataExtractor {
                     .append(';').append(statement.name())
                     .append(';').append(statement.name().replace(" ", ""))
                     .append(';').append(statement.hidden())
-                    .append(';').append(statement.privileged())
-                    .append(';').append(statement.nonPrivileged())
+                    .append(';').append(false)
+                    .append(';').append(false)
                     .append(';').append(statementHint(statement))
-                    .append(';').append(statement.category().name)
-                    .append(';').append(statement.category().color)
-                    .append(';').append(encode(statement.category().description()))
+                    .append(';').append("")
+                    .append(';').append(statement.color())
+                    .append(';').append("")
                     .append(newLine);
         }
 

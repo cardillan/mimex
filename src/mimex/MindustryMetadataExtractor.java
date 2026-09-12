@@ -1,10 +1,11 @@
 package mimex;
 
+import arc.Core;
+import arc.files.Fi;
 import arc.util.Log;
 import mindustry.core.Version;
 import mindustry.mod.Mod;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -17,6 +18,9 @@ public class MindustryMetadataExtractor extends Mod {
 
     public MindustryMetadataExtractor() {
         Log.info("MindustryMetadataExtractor constructor.");
+        Log.info("Mindustry version: " + Version.number + ", build: " + Version.build + ", revision: " + Version.revision + ".");
+        Fi fi = Core.files.local("build.txt");
+        fi.writeString("Mindustry version: " + Version.number + ", build: " + Version.build + ", revision: " + Version.revision + ".");
     }
 
     public static void registerClass(String key, String value) {
@@ -26,7 +30,7 @@ public class MindustryMetadataExtractor extends Mod {
     @Override
     public void init() {
         super.init();
-        if (Version.number == expectedVersion) {
+        if (Version.number == expectedVersion && Version.build >= minBuild && Version.build <= maxBuild) {
             new IconsExtractor().extract();
             new ColorsExtractor().extract();
             new BlocksExtractor().extract();

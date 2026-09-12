@@ -22,7 +22,6 @@ public class UnitsExtractor extends ClassMetadataExtractor {
                 .append(';').append("size")
                 .append(';').append("itemCapacity")
                 .append(';').append("speed")
-                .append(';').append("payloadCapacity")
                 .append(newLine);
 
         Vars.content.units().each(unit -> sbr.append(unit.name)
@@ -32,7 +31,6 @@ public class UnitsExtractor extends ClassMetadataExtractor {
                 .append(';').append(unit.hitSize / tilesize)
                 .append(';').append(unit.itemCapacity)
                 .append(';').append(unit.speed * 60f / tilesize)
-                .append(';').append(unit.sample instanceof Payloadc ? unit.payloadCapacity / tilePayload : 0f)
                 .append(newLine));
 
         writeToFile("units");
