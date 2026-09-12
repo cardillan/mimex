@@ -6,11 +6,14 @@ import mindustry.world.blocks.distribution.ItemBridge;
 import mindustry.world.blocks.distribution.MassDriver;
 import mindustry.world.blocks.legacy.LegacyBlock;
 import mindustry.world.blocks.logic.LogicBlock;
+import mindustry.world.blocks.logic.MemoryBlock;
 import mindustry.world.blocks.payloads.PayloadMassDriver;
 import mindustry.world.blocks.power.PowerNode;
 import mindustry.world.blocks.units.UnitFactory;
 import mindustry.world.meta.BuildVisibility;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
 import java.util.IdentityHashMap;
 import java.util.Map;
 
@@ -20,19 +23,7 @@ public class BlocksExtractor extends ClassMetadataExtractor {
         super(Block.class);
     }
 
-    private final Map<BuildVisibility, String> visibilityMap = new IdentityHashMap<>();
-
-    {
-        visibilityMap.put(BuildVisibility.hidden, "hidden");
-        visibilityMap.put(BuildVisibility.shown, "shown");
-        visibilityMap.put(BuildVisibility.debugOnly, "debugOnly");
-        visibilityMap.put(BuildVisibility.editorOnly, "editorOnly");
-        visibilityMap.put(BuildVisibility.sandboxOnly, "sandboxOnly");
-        visibilityMap.put(BuildVisibility.campaignOnly, "campaignOnly");
-        visibilityMap.put(BuildVisibility.lightingOnly, "lightingOnly");
-        visibilityMap.put(BuildVisibility.ammoOnly, "ammoOnly");
-        visibilityMap.put(BuildVisibility.fogOnly, "fogOnly");
-    }
+    private final Map<BuildVisibility, String> visibilityMap = createBuildVisibilityMap();
 
     private double getRange(Block block) {
         if (block instanceof PowerNode p) {
@@ -102,6 +93,10 @@ public class BlocksExtractor extends ClassMetadataExtractor {
                 .append(';').append("powerStorage")
                 .append(';').append("configSenseable")
                 .append(';').append("hasBuilding")
+                .append(';').append("iptDefault")
+                .append(';').append("iptLimit")
+                .append(';').append("instructionScale")
+                .append(';').append("memoryCapacity")
                 .append(newLine);
 
         Vars.content.blocks().each(block -> {
@@ -142,10 +137,33 @@ public class BlocksExtractor extends ClassMetadataExtractor {
                     .append(';').append(block.consPower == null ? 0f : block.consPower.capacity)
                     .append(';').append(block.configSenseable())
                     .append(';').append(block.hasBuilding())
+                    .append(';').append(block instanceof LogicBlock b ? b.instructionsPerTick : 0)
+                    .append(';').append(block instanceof LogicBlock b ? b.maxInstructionsPerTick : 0)
+                    .append(';').append(block instanceof LogicBlock b ? b.maxInstructionScale : 0)
+                    .append(';').append(block instanceof MemoryBlock b ? b.memoryCapacity : 0)
                     .append(newLine);
         });
 
         writeToFile("blocks");
 
+    }
+
+    private IdentityHashMap<BuildVisibility, String> createBuildVisibilityMap() {
+        try {
+            IdentityHashMap<BuildVisibility, String> map = new IdentityHashMap<>();
+
+            for (Field field : BuildVisibility.class.getDeclaredFields()) {
+                int mods = field.getModifiers();
+
+                if (Modifier.isPublic(mods) && Modifier.isStatic(mods) && Modifier.isFinal(mods) && field.getType() == BuildVisibility.class) {
+                    BuildVisibility value = (BuildVisibility) field.get(null);
+                    map.put(value, field.getName());
+                }
+            }
+
+            return map;
+        } catch (IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
