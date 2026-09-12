@@ -6,6 +6,7 @@ import mindustry.world.blocks.distribution.ItemBridge;
 import mindustry.world.blocks.distribution.MassDriver;
 import mindustry.world.blocks.legacy.LegacyBlock;
 import mindustry.world.blocks.logic.LogicBlock;
+import mindustry.world.blocks.logic.MemoryBlock;
 import mindustry.world.blocks.payloads.PayloadMassDriver;
 import mindustry.world.blocks.power.PowerNode;
 import mindustry.world.blocks.units.UnitFactory;
@@ -95,6 +96,7 @@ public class BlocksExtractor extends ClassMetadataExtractor {
                 .append(';').append("iptDefault")
                 .append(';').append("iptLimit")
                 .append(';').append("instructionScale")
+                .append(';').append("memoryCapacity")
                 .append(newLine);
 
         Vars.content.blocks().each(block -> {
@@ -138,6 +140,7 @@ public class BlocksExtractor extends ClassMetadataExtractor {
                     .append(';').append(block instanceof LogicBlock b ? b.instructionsPerTick : 0)
                     .append(';').append(block instanceof LogicBlock b ? b.maxInstructionsPerTick : 0)
                     .append(';').append(block instanceof LogicBlock b ? b.maxInstructionScale : 0)
+                    .append(';').append(block instanceof MemoryBlock b ? b.memoryCapacity : 0)
                     .append(newLine);
         });
 
