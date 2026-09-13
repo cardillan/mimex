@@ -1,5 +1,8 @@
 displayName: "Mimex BE"
-name: "mindustry-metadata-extractor-be"
+
+# Internal name. Crafted so that the hash code is 0, to make sure the mod loads first.
+# Will be made for other mod verions too.
+name: "mindustry-metadata-extractor-000-epbuhjca"
 author: "Cardillan"
 main: "mimex.MindustryMetadataExtractor"
 description: "Mindustry Metadata Extractor. Does not have any useful content."
