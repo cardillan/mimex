@@ -17,7 +17,7 @@ public class ItemsExtractor extends ClassMetadataExtractor {
                 .append(';').append("color")
                 .append(newLine);
 
-        Vars.content.items().each(item -> sbr.append(item.name)
+        Vars.content.items().each(c -> c.minfo.mod == null, item -> sbr.append(item.name)
                 .append(';').append(item.id)
                 .append(';').append(LogicIdConvertor.lookupLogicId(item))
                 .append(';').append(item.color)

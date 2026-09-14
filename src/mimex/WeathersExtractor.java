@@ -16,7 +16,7 @@ public class WeathersExtractor extends ClassMetadataExtractor {
                 .append(';').append("logicId")
                 .append(newLine);
 
-        Vars.content.weathers().each(item -> sbr.append(item.name)
+        Vars.content.weathers().each(c -> c.minfo.mod == null, item -> sbr.append(item.name)
                 .append(';').append(item.id)
                 .append(';').append(LogicIdConvertor.lookupLogicId(item))
                 .append(newLine));

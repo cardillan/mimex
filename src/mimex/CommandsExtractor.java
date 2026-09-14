@@ -15,7 +15,7 @@ public class CommandsExtractor extends ClassMetadataExtractor {
                 .append(';').append("id")
                 .append(newLine);
 
-        Vars.content.unitCommands().each(command -> sbr.append(command.name)
+        Vars.content.unitCommands().each(c -> c.minfo.mod == null, command -> sbr.append(command.name)
                 .append(';').append(command.id)
                 .append(newLine));
 

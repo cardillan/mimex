@@ -25,7 +25,7 @@ public class UnitsExtractor extends ClassMetadataExtractor {
                 .append(';').append("payloadCapacity")
                 .append(newLine);
 
-        Vars.content.units().each(unit -> sbr.append(unit.name)
+        Vars.content.units().each(c -> c.minfo.mod == null, unit -> sbr.append(unit.name)
                 .append(';').append(unit.id)
                 .append(';').append(LogicIdConvertor.lookupLogicId(unit))
                 .append(';').append(unit.health)

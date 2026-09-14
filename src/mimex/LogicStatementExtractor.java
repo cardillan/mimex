@@ -31,6 +31,7 @@ public class LogicStatementExtractor extends MetadataExtractor {
 
         for (Prov<LStatement> provider : LogicIO.allStatements) {
             LStatement statement = provider.get();
+            if (!statement.getClass().getName().startsWith("mindustry.logic")) continue;
 
             createNameAndArguments(statement)
                     .append(';').append(getArgumentTypes(statement.getClass()))
