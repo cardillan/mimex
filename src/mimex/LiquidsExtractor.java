@@ -17,7 +17,7 @@ public class LiquidsExtractor extends ClassMetadataExtractor {
                 .append(';').append("color")
                 .append(newLine);
 
-        Vars.content.liquids().each(liquid -> sbr.append(liquid.name)
+        Vars.content.liquids().each(c -> c.minfo.mod == null, liquid -> sbr.append(liquid.name)
                 .append(';').append(liquid.id)
                 .append(';').append(-1)
                 .append(';').append(liquid.color)
