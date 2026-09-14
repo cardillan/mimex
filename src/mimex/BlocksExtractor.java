@@ -99,7 +99,7 @@ public class BlocksExtractor extends ClassMetadataExtractor {
                 .append(';').append("memoryCapacity")
                 .append(newLine);
 
-        Vars.content.blocks().each(block -> {
+        Vars.content.blocks().each(c -> c.minfo.mod == null, block -> {
             sbr.append(block.name)
                     .append(';').append(block.id)
                     .append(';').append(LogicIdConvertor.lookupLogicId(block))
