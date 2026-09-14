@@ -17,7 +17,7 @@ public class StatusEffectsExtractor extends ClassMetadataExtractor {
                 .append(';').append("hidden")
                 .append(newLine);
 
-        Vars.content.statusEffects().each(item -> sbr.append(item.name)
+        Vars.content.statusEffects().each(c -> c.minfo.mod == null, item -> sbr.append(item.name)
                 .append(';').append(item.id)
                 .append(';').append(LogicIdConvertor.lookupLogicId(item))
                 .append(';').append(item.isHidden())

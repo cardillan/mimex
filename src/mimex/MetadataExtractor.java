@@ -21,7 +21,7 @@ abstract class MetadataExtractor {
     protected void writeToFile(String file) {
         Fi fi = Core.files.local(getFileName(file));
         fi.writeString(sbr.toString());
-        Log.info("Created local file " + fi.absolutePath());
+        Log.info("[mimex] Created local file " + fi.absolutePath());
         sbr.setLength(0);
     }
 }
