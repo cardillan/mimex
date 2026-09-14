@@ -1,7 +1,5 @@
 package mimex;
 
-import arc.Core;
-import arc.files.Fi;
 import arc.util.Log;
 import mindustry.core.Version;
 import mindustry.mod.Mod;
@@ -29,8 +27,7 @@ public class MindustryMetadataExtractor extends Mod {
         if (Version.number == expectedVersion && Version.build >= minBuild && Version.build <= maxBuild) {
             Log.info("[mimex] Mindustry version: " + Version.number + ", build: " + Version.build + ", revision: " + Version.revision + ".");
 
-            Fi fi = Core.files.local("build.txt");
-            fi.writeString("Mindustry version: " + Version.number + ", build: " + Version.build + ", revision: " + Version.revision + ".");
+            //Core.files.local("build.txt").writeString("Mindustry version: " + Version.number + ", build: " + Version.build + ", revision: " + Version.revision + ".");
 
             new IconsExtractor().extract();
             new ColorsExtractor().extract();
